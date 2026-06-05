@@ -1,0 +1,81 @@
+.container {
+  margin-bottom: 3rem;
+}
+
+.workflowContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.stepCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+}
+
+.iconWrapper {
+  background-color: white;
+  border: 1px solid var(--border-color);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stepCard:hover .iconWrapper {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-action);
+}
+
+.icon {
+  color: var(--primary-action);
+}
+
+.stepName {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.arrowWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow {
+  color: #94A3B8;
+}
+
+@media (max-width: 1024px) {
+  .workflowContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .arrowWrapper {
+    transform: rotate(90deg);
+  }
+  
+  .stepCard {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0 2rem;
+  }
+}

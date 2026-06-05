@@ -1,0 +1,58 @@
+.footer {
+  background-color: var(--navbar-bg);
+  color: white;
+  padding: 3rem 0 0;
+  margin-top: 4rem;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.footerInfo {
+  max-width: 400px;
+}
+
+.projectName {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.projectType {
+  color: #94A3B8;
+  font-size: 0.95rem;
+}
+
+.footerTech p {
+  font-size: 0.95rem;
+  color: #94A3B8;
+  margin-bottom: 1rem;
+}
+
+.techTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.techTags span {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #E2E8F0;
+}
+
+.copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 0;
+  text-align: center;
+  color: #64748B;
+  font-size: 0.85rem;
+}

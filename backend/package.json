@@ -1,0 +1,18 @@
+{
+  "name": "fraud-detection-backend",
+  "version": "1.0.0",
+  "description": "Flask API backend for the Insurance Fraud Detection System",
+  "main": "app.py",
+  "scripts": {
+    "start": "python app.py",
+    "install-deps": "pip install -r requirements.txt",
+    "dev": "flask --app app run --debug"
+  },
+  "keywords": [
+    "flask",
+    "python",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC"
+}

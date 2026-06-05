@@ -1,0 +1,25 @@
+.homeContainer {
+  width: 100%;
+}
+
+.sectionMargin {
+  margin-bottom: 4rem;
+}
+
+.dashboardSection {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.resultsHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}

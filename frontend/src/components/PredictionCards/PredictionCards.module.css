@@ -1,0 +1,64 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.resultCard {
+  border-left-width: 4px;
+}
+
+.dangerBorder {
+  border-left-color: var(--fraud-alert);
+}
+
+.successBorder {
+  border-left-color: var(--success);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.cardValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.iconDanger {
+  color: var(--fraud-alert);
+}
+
+.iconSuccess {
+  color: var(--success);
+}
+
+.iconNeutral {
+  color: var(--primary-action);
+}
+
+.progressBarBg {
+  height: 8px;
+  background-color: var(--border-color);
+  border-radius: 4px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease-in-out;
+}
