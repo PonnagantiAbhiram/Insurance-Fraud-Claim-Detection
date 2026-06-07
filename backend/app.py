@@ -132,16 +132,22 @@ def analyze_claim():
         print(str(e))
         traceback.print_exc()
 
+        # Check if this is a model loading error
+        error_msg = str(e)
+        if "is not loaded" in error_msg or "No such file or directory" in error_msg:
+            return jsonify({
+                "error": "ML models are not loaded. Please run the Insurance_model_fixed.ipynb notebook to generate the required model files.",
+                "details": error_msg
+            }), 503  # Service Unavailable
+        
         return jsonify({
-            "error":
-                "An error occurred during analysis.",
-            "details":
-                str(e)
+            "error": "An error occurred during fraud analysis. Please check the claim data and try again.",
+            "details": error_msg
         }), 500
 
 
 if __name__ == '__main__':
     app.run(
-        debug=True,
+        debug=False,
         port=5000
     )

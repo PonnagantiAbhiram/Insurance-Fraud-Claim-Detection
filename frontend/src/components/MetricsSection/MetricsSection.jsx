@@ -3,11 +3,11 @@ import { ChevronDown, ChevronUp, Database } from 'lucide-react';
 import styles from './MetricsSection.module.css';
 
 const metrics = [
-  { metric: "Accuracy", value: "99.67%", description: "Overall model correctness" },
-  { metric: "Precision", value: "100.00%", description: "Exactness of fraud predictions" },
+  { metric: "Accuracy", value: "98.33%", description: "Overall model correctness" },
+  { metric: "Precision", value: "94.81%", description: "Exactness of fraud predictions" },
   { metric: "Recall", value: "98.65%", description: "Completeness of fraud detection" },
-  { metric: "F1 Score", value: "99.32%", description: "Harmonic mean of precision & recall" },
-  { metric: "ROC-AUC", value: "99.46%", description: "Area under the ROC curve" }
+  { metric: "F1 Score", value: "96.69%", description: "Harmonic mean of precision & recall" },
+  { metric: "ROC-AUC", value: "99.91%", description: "Area under the ROC curve" }
 ];
 
 const MetricsSection = () => {

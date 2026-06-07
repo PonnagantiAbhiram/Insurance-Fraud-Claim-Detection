@@ -15,6 +15,7 @@ const Home = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [predictionResult, setPredictionResult] = useState(null);
+  const [error, setError] = useState(null);
 
   const dashboardRef = useRef(null);
   const loaderRef = useRef(null);
@@ -23,6 +24,7 @@ const Home = () => {
     setIsProcessing(true);
     setCurrentStep(0);
     setPredictionResult(null);
+    setError(null);
 
     // Scroll to loader
     setTimeout(() => {
@@ -40,13 +42,20 @@ const Home = () => {
     }
 
     // Wait for API to resolve (it should be done by now, but just in case)
-    const result = await apiPromise;
-    setPredictionResult(result);
-    setIsProcessing(false);
+    try {
+      const result = await apiPromise;
+      setPredictionResult(result);
+    } catch (err) {
+      setError(err.message || 'An error occurred while analyzing the claim. Please ensure the Flask backend is running on port 5000 and models are properly loaded.');
+    } finally {
+      setIsProcessing(false);
+    }
 
     // Scroll to results
     setTimeout(() => {
-      dashboardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (predictionResult || error) {
+        dashboardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }, 100);
   };
 
@@ -55,7 +64,7 @@ const Home = () => {
       <HeroSection />
 
       <div className="container">
-        {!isProcessing && !predictionResult && (
+        {!isProcessing && !predictionResult && !error && (
           <div className={styles.sectionMargin}>
             <ClaimForm onSubmit={handleClaimSubmit} isLoading={isProcessing} />
           </div>
@@ -64,6 +73,27 @@ const Home = () => {
         {isProcessing && (
           <div className={styles.sectionMargin} ref={loaderRef}>
             <Loader currentStep={currentStep} />
+          </div>
+        )}
+
+        {error && !isProcessing && (
+          <div ref={dashboardRef} className={styles.sectionMargin}>
+            <div className="card" style={{ borderLeft: '4px solid #dc2626', backgroundColor: '#fee2e2' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                <div style={{ fontSize: '1.5rem' }}>⚠️</div>
+                <h3 style={{ margin: 0, color: '#7f1d1d' }}>Analysis Failed</h3>
+              </div>
+              <p style={{ color: '#7f1d1d', marginBottom: '1.5rem' }}>{error}</p>
+              <button
+                className="btn-primary"
+                onClick={() => {
+                  setError(null);
+                  setPredictionResult(null);
+                }}
+              >
+                Try Again
+              </button>
+            </div>
           </div>
         )}
 
