@@ -9,9 +9,38 @@ const TECHNICAL_PARAMS = {
   DESCRIPTION_MIN_LENGTH: 20,
   DESCRIPTION_MAX_LENGTH: 5000,
   CITY_MAX_LENGTH: 50,
-  INCIDENT_TYPES: ['Multi-vehicle Collision', 'Single Vehicle Collision', 'Vehicle Theft', 'Parked Car'],
-  POLICY_STATES: ['OH', 'IL', 'IN', 'NY', 'CA'],
-  INSURED_RELATIONSHIPS: ['own-child', 'other-relative', 'not-in-family', 'husband', 'wife', 'unmarried']
+
+  INCIDENT_TYPES: [
+    'Multi-vehicle Collision',
+    'Single Vehicle Collision',
+    'Vehicle Theft',
+    'Parked Car'
+  ],
+
+  POLICY_STATES: [
+    'OH',
+    'IL',
+    'IN'
+  ],
+
+  INCIDENT_CITIES: [
+    'Arlington',
+    'Columbus',
+    'Hillsdale',
+    'Northbend',
+    'Northbrook',
+    'Riverwood',
+    'Springfield'
+  ],
+
+  INSURED_RELATIONSHIPS: [
+    'own-child',
+    'other-relative',
+    'not-in-family',
+    'husband',
+    'wife',
+    'unmarried'
+  ]
 };
 
 const ClaimForm = ({ onSubmit, isLoading }) => {
@@ -125,25 +154,42 @@ const ClaimForm = ({ onSubmit, isLoading }) => {
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="incidentCity">Incident City * (Max {TECHNICAL_PARAMS.CITY_MAX_LENGTH} chars)</label>
-            <input
-              type="text"
-              id="incidentCity"
-              name="incidentCity"
-              placeholder="e.g. Columbus"
-              value={formData.incidentCity}
-              onChange={handleChange}
-              maxLength={TECHNICAL_PARAMS.CITY_MAX_LENGTH}
-              style={{ borderColor: validationErrors.incidentCity ? '#dc2626' : '' }}
-            />
-            {validationErrors.incidentCity && (
-              <div style={{ color: '#dc2626', fontSize: '0.875rem', marginTop: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <AlertCircle size={14} />
-                {validationErrors.incidentCity}
-              </div>
-            )}
-          </div>
+  <label htmlFor="incidentCity">Incident City *</label>
+  <select id="incidentCity"
+    name="incidentCity"
+    value={formData.incidentCity}
+    onChange={handleChange}
+    style={{
+      borderColor: validationErrors.incidentCity ? '#dc2626' : ''
+    }}
+  >
+    <option value="">Select city...</option>
 
+    <option value="Arlington">Arlington</option>
+    <option value="Columbus">Columbus</option>
+    <option value="Hillsdale">Hillsdale</option>
+    <option value="Northbend">Northbend</option>
+    <option value="Northbrook">Northbrook</option>
+    <option value="Riverwood">Riverwood</option>
+    <option value="Springfield">Springfield</option>
+  </select>
+
+  {validationErrors.incidentCity && (
+    <div
+      style={{
+        color: '#dc2626',
+        fontSize: '0.875rem',
+        marginTop: '0.25rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem'
+      }}
+    >
+      <AlertCircle size={14} />
+      {validationErrors.incidentCity}
+    </div>
+  )}
+</div>
           <div className={styles.formGroup}>
             <label htmlFor="policyState">Policy State *</label>
             <select
@@ -157,8 +203,6 @@ const ClaimForm = ({ onSubmit, isLoading }) => {
               <option value="OH">Ohio</option>
               <option value="IL">Illinois</option>
               <option value="IN">Indiana</option>
-              <option value="NY">New York</option>
-              <option value="CA">California</option>
             </select>
             {validationErrors.policyState && (
               <div style={{ color: '#dc2626', fontSize: '0.875rem', marginTop: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
